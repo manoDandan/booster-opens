@@ -1,36 +1,121 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Boosteria Clone
 
-## Getting Started
+Uma aplicação em Next.js para simular a abertura de boosters de cartas Pokémon, com visual moderno, geração aleatória de raridades e integração com Prisma para persistência de dados.
 
-First, run the development server:
+## 🎯 Objetivo
+
+Este projeto foi criado para praticar:
+- Next.js App Router
+- TypeScript
+- Prisma ORM
+- consumo de API interna
+- lógica de sorteio com pesos por raridade
+- estrutura de frontend com React no lado do cliente
+
+## 🧩 Funcionalidades
+
+- abertura de booster simulada
+- sorteio de carta com raridades: comum, rara, épica e lendária
+- carregamento de cartas via API interna
+- integração com banco de dados usando Prisma
+- layout simples e responsivo
+
+## 🛠️ Stack
+
+- Next.js
+- React
+- TypeScript
+- Prisma
+- PostgreSQL / SQLite (dependendo da configuração)
+- Tailwind CSS
+
+## 🚀 Como rodar localmente
+
+1. Instale as dependências:
+
+```bash
+npm install
+```
+
+2. Configure o banco de dados no arquivo `.env`:
+
+```env
+DATABASE_URL="file:./dev.db"
+```
+
+Ou use outra URL de banco conforme sua configuração local.
+
+3. Gere o cliente Prisma:
+
+```bash
+npx prisma generate
+```
+
+4. Rode as migrations:
+
+```bash
+npx prisma migrate dev
+```
+
+5. Inicie o servidor de desenvolvimento:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+6. Acesse:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📁 Estrutura do projeto
 
-## Learn More
+```text
+app/
+  api/
+    cards/
+      route.ts
+  globals.css
+  layout.tsx
+  page.tsx
+components/
+  BoosterOpener.tsx
+lib/
+  prisma.ts
+prisma/
+  schema.prisma
+  migrations/
+```
 
-To learn more about Next.js, take a look at the following resources:
+## 🧠 Regras de sorteio
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+As cartas têm pesos diferentes por raridade para deixar o resultado mais realista:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- comum: 60
+- rara: 30
+- épica: 8
+- lendária: 2
 
-## Deploy on Vercel
+Esses valores influenciam a chance de cada carta aparecer no booster.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🧪 Scripts
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run dev
+npm run build
+npm run start
+npm run lint
+```
+
+## 📌 Observações
+
+- Este projeto ainda está em desenvolvimento e foi pensado como base para evoluir com:
+  - catálogo de cartas
+  - login e coleção do usuário
+  - sistema de packs e trocas
+  - marketplace interno
+
+## 🤝 Contribuição
+
+Sinta-se livre para abrir issues e pull requests para melhorar a aplicação.
